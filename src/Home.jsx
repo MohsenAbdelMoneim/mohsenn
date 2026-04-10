@@ -1,77 +1,112 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { mohsen } from './assets/img';
+import Typed from 'typed.js';
 
 const Home = () => {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        'Mohsen Abdel Moneim',
+        'Frontend Developer',
+        'UI/UX Designer',
+        'MIS Specialist'
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 1500,
+      loop: true,
+      cursorChar: '|',
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
   return (
-    <div className="relative w-full">
-
-      {/* Floating Badge */}
-      <div
-        id="eng-tag"
-        className="fixed bottom-10 left-4 md:left-10 z-50 hidden md:flex flex-col items-center cursor-pointer bg-[#1A1A1A]/90 backdrop-blur-sm p-3 rounded-2xl shadow-2xl transition-transform hover:scale-105"
-      >
-        <div className="w-full h-1 mb-2 rounded animate-pulse bg-gradient-to-r from-[#E63946] via-gray-500 to-black"></div>
-
-        <span className="text-white text-sm md:text-base font-semibold px-2">
-          I’m Frontend Mohsen
-        </span>
-
-        <div className="w-full h-1 mt-2 rounded animate-pulse bg-gradient-to-r from-black via-gray-500 to-[#E63946]"></div>
+    <div className="relative w-full bg-gray-950 overflow-hidden min-h-screen">
+      
+      {/* Background Abstract Glow */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#E63946] opacity-[0.04] blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#E63946] opacity-[0.04] blur-[120px] rounded-full"></div>
       </div>
 
-      {/* HERO */}
+      {/* HERO SECTION */}
       <div
-        className="py-20 max-w-6xl mx-auto px-6 min-h-screen flex items-center justify-center"
+        className="py-20 md:py-28 max-w-6xl mx-auto px-6 flex items-center justify-center"
         id="home"
         data-aos="fade-up"
       >
-        <div className="text-center w-full">
+        <div className="text-center w-full mt-10 md:mt-16">
 
-          {/* Image */}
-          <div className="relative w-48 h-48 mx-auto mb-8 group">
-            <div className="absolute inset-0 bg-[#E63946] blur-3xl opacity-30 rounded-full animate-pulse group-hover:opacity-60 transition-opacity duration-500"></div>
+        {/* Profile Image Section */}
+<div className="relative w-44 h-44 md:w-56 md:h-56 mx-auto mb-10 group">
 
-            <img
-              src={mohsen}
-              alt="Mohsen"
-              className="relative w-full h-full object-cover rounded-full border-4 border-[#E63946] shadow-xl transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
+  {/* Status Badge (cleaned) */}
+  <div className="absolute -top-2 -right-2 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-green-500/30">
+    <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-70"></span>
+      <span className="relative h-2 w-2 rounded-full bg-green-500"></span>
+    </span>
+    <span className="text-[10px] text-green-400 font-semibold tracking-wide">
+      Available
+    </span>
+  </div>
 
-          {/* Name */}
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white min-h-[3rem] md:min-h-[4rem]">
-            <span id="name-typing"></span>
-          </h2>
+  {/* Soft Glow (simplified) */}
+  <div className="absolute inset-0 bg-[#E63946] opacity-15 blur-3xl rounded-full" />
 
-          {/* Description */}
-          <p className="text-[#E63946] font-medium mb-8 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed">
-            I build clean, responsive, and user-friendly web interfaces.
-          </p>
+  {/* Single Ring only (clean look) */}
+  <div className="absolute inset-[-6px] border border-white/10 rounded-full animate-[spin_18s_linear_infinite]" />
 
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+  {/* Image */}
+  <img
+    src={mohsen}
+    alt="Mohsen Abdel Moneim"
+    className="relative w-full h-full object-cover rounded-full border border-white/10 shadow-xl transition-transform duration-500 group-hover:scale-[1.02]"
+  />
+</div>
 
+{/* Intro */}
+<div className="mb-6 text-center">
+  <span className="text-gray-500 text-xs md:text-sm tracking-[0.35em] uppercase block mb-3">
+    Frontend Developer
+  </span>
+
+  <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+    I’m <span ref={el} className="text-[#E63946]" />
+  </h2>
+</div>
+
+{/* Subtitle (clean & stronger message) */}
+<p className="text-gray-500 text-base md:text-lg max-w-xl mx-auto text-center leading-relaxed">
+  I build clean, fast and user-focused web interfaces that solve real problems and deliver real business value.
+</p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-6 items-center">
             <a
               href="#contact"
-              className="px-8 py-3 bg-[#E63946] text-white font-semibold rounded-full hover:bg-[#C1121F] hover:scale-105 transition-all shadow-lg hover:shadow-red-500/30"
+              className="w-full sm:w-auto px-12 py-4.5 bg-[#E63946] text-white font-bold rounded-2xl hover:bg-[#C1121F] hover:shadow-[0_10px_30px_rgba(230,57,70,0.4)] transition-all duration-300 transform active:scale-95 no-underline shadow-lg text-center"
             >
               Contact Me
             </a>
 
             <a
-              href="./cv.pdf"
+              href="./Black and White Clean Professional A4 Resume for Marketing Manager.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 border-2 border-[#E63946] text-[#E63946] font-semibold rounded-full hover:bg-[#E63946] hover:text-white hover:scale-105 transition-all"
+              className="w-full sm:w-auto px-12 py-4.5 border border-white/20 text-white font-bold rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 backdrop-blur-sm no-underline shadow-lg text-center"
             >
               Download CV
             </a>
-
           </div>
 
         </div>
       </div>
-
     </div>
   );
 }

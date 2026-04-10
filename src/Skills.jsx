@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const Skills = () => {
+  // تحديث القائمة لتشمل المهارات التقنية والتحليلية من الـ CV الخاص بك
   const skillList = [
-    { name: 'HTML5', level: 95, icon: '🌐' },
-    { name: 'CSS3 / Tailwind v4', level: 90, icon: '🎨' },
+    { name: 'HTML5 / CSS3', level: 95, icon: '🌐' },
     { name: 'JavaScript (ES6+)', level: 85, icon: '⚡' },
+    { name: 'Tailwind CSS / Bootstrap', level: 90, icon: '🎨' },
     { name: 'React.js', level: 80, icon: '⚛️' },
-    { name: 'UI/UX Design', level: 75, icon: '📐' },
+    { name: 'UI/UX (Figma / Adobe XD)', level: 85, icon: '📐' },
+    { name: 'Systems Analysis (MIS)', level: 50, icon: '📊' }, // إضافة تخصص المعهد
     { name: 'Git & GitHub', level: 85, icon: '📂' },
+    { name: 'Database Design', level: 60, icon: '💾' }, // مهارة إضافية من مشروع الجيم
   ];
 
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(skillList.map(() => 0));
 
-  // detect when section is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -22,7 +24,7 @@ const Skills = () => {
           setVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 } // تقليل الـ threshold ليبدأ التحريك أسرع قليلاً
     );
 
     if (sectionRef.current) {
@@ -32,7 +34,6 @@ const Skills = () => {
     return () => observer.disconnect();
   }, []);
 
-  // animate numbers
   useEffect(() => {
     if (!visible) return;
 
@@ -44,7 +45,7 @@ const Skills = () => {
           return target;
         })
       );
-    }, 15);
+    }, 10); // تسريع الحركة قليلاً لتبدو أكثر سلاسة
 
     return () => clearInterval(interval);
   }, [visible]);
@@ -56,63 +57,51 @@ const Skills = () => {
       className="py-24 bg-gray-950 text-white relative overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-6">
-
-        {/* glow */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#E63946] opacity-[0.04] blur-[140px] -z-10"></div>
+        {/* glow effect */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#E63946] opacity-[0.05] blur-[120px] -z-10"></div>
 
         {/* title */}
         <div className="text-center mb-16">
-          <h3 className="text-4xl md:text-5xl font-black text-[#E63946] mb-4">
-            My Skills
+          <h3 className="text-4xl md:text-5xl font-black text-[#E63946] mb-4 uppercase tracking-tight">
+            Technical Expertise
           </h3>
-          <p className="text-gray-400">
-            Skills that grow with every project
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Combining Frontend Development with Systems Analysis to build professional and scalable digital solutions.
           </p>
         </div>
 
         {/* grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillList.map((skill, index) => (
             <div
               key={index}
-              className="group bg-white/[0.02] border border-white/5 p-8 rounded-[2rem]
-              hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-2"
+              className="group bg-white/[0.03] border border-white/10 p-6 rounded-3xl
+              hover:bg-white/[0.07] transition-all duration-500 hover:-translate-y-2 hover:border-[#E63946]/30 shadow-2xl"
             >
-
-              {/* icon + percent */}
               <div className="flex justify-between items-center mb-5">
-
-                <span className="text-3xl group-hover:scale-110 transition-transform">
+                <span className="text-4xl group-hover:scale-125 transition-transform duration-500">
                   {skill.icon}
                 </span>
-
-                <span className="text-[#E63946] font-bold text-sm bg-[#E63946]/10 px-3 py-1 rounded-full">
+                <span className="text-[#E63946] font-extrabold text-xs bg-[#E63946]/10 px-3 py-1 rounded-full border border-[#E63946]/20">
                   {visible ? progress[index] : 0}%
                 </span>
-
               </div>
 
-              {/* name */}
-              <h4 className="text-xl font-bold mb-5 text-gray-100">
+              <h4 className="text-lg font-bold mb-4 text-gray-100 group-hover:text-[#E63946] transition-colors">
                 {skill.name}
               </h4>
 
               {/* progress bar */}
-              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-
+              <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#E63946] rounded-full transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-[#E63946] to-[#ff4d5a] rounded-full transition-all duration-300"
                   style={{
-                    width: visible ? `${progress[index]}%` : '0%',
+                    width: visible ? `${progress[index]}%` : '50%',
                   }}
                 />
-
               </div>
-
             </div>
           ))}
-
         </div>
       </div>
     </section>

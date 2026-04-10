@@ -1,6 +1,7 @@
 import React from 'react'
 import { HashLink } from 'react-router-hash-link'
-import './App.css'
+import './NavBar.css'
+import './index.css'
 
 const NavBar = () => {
   return (
@@ -52,7 +53,14 @@ const NavBar = () => {
             Contact
           </HashLink>
         </div>
-
+ <div className="hidden md:block">
+          <a
+            href="#contact"
+            className="px-5 py-2.5 text-sm font-semibold rounded-full bg-[#E63946] text-white hover:bg-[#c1121f] transition shadow-lg hover:shadow-[0_10px_30px_rgba(230,57,70,0.25)]"
+          >
+            Hire Me
+          </a>
+        </div>
         {/* Mobile Menu Icon (Placeholder for now) */}
         <div className='md:hidden text-[#E63946]'>
            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

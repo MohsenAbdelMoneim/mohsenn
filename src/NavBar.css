@@ -1,0 +1,13 @@
+a {
+    text-decoration: none;
+}
+/* شيل الخط من كل اللينكات في الموقع */
+a, .HashLink {
+  text-decoration: none !important;
+}
+
+/* لو عايز خط يظهر بس بشكل شيك لما نلمس اللينك */
+a:hover {
+  text-decoration: none; /* أو خليه يغير لون بس بدل الخط */
+  opacity: 0.8;
+}

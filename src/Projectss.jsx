@@ -1,154 +1,171 @@
-import {  phone , cars , learing , hode,gym } from './assets/img'
-import './index.css'
-import 'swiper/css';
-import 'swiper/css/pagination';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { gym, learing, phone, hode, cars } from "./assets/img";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards } from "swiper/modules";
 
-// import required modules
-import { EffectCards } from 'swiper/modules';
 const Projectss = () => {
   return (
-    <div>
+    <section
+      id="projects"
+      className="relative py-24 px-6 bg-[#0B0F19] overflow-hidden"
+    >
 
-<div id="projectss" className="py-20 max-w-6xl mx-auto px-6">
-  <h3 className="text-3xl font-bold mb-12 text-center" data-en="Projects" data-ar="المشاريع">Projects</h3>
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Background glow */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-[#E63946] opacity-10 blur-[150px] rounded-full" />
+      </div>
 
-    <div className="project-card" data-aos="zoom-in">
-      <img src={gym} alt="Game Project"/>
-      <div className="p-5">
-        <h4>gym Project</h4>
-        <p>Interactive game using JS and HTML/CSS.</p>
-        <div>
-          <a href="https://form-u8pa.vercel.app" target="_blank">Live</a>
+      <div className="relative max-w-6xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-xs tracking-[0.4em] text-[#E63946] uppercase font-semibold">
+            Projects
+          </span>
+
+          <h2 className="mt-3 text-4xl md:text-6xl font-bold text-white">
+            My Work
+          </h2>
+
+          <div className="w-12 h-[2px] bg-[#E63946] mx-auto mt-6" />
         </div>
-      </div>
-    </div>
 
-    <div className="project-card" data-aos="zoom-in">
-      <img src={learing} alt="Learning Project"/>
-      <div className="p-5">
-        <h4>منصه Project</h4>
-        <p>Learning platform project.</p>
-        <div>
-          <a href="https://learing-livid.vercel.app" target="_blank" className='bg-sky-500'>Live</a>
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {/* Project */}
+          {[
+            {
+              title: "Smart Gym System",
+              desc: "Full management system with dashboards for owners and members.",
+              img: gym,
+              link: "https://form-u8pa.vercel.app",
+              color: "#E63946",
+              tag: "Graduation Project",
+            },
+            {
+              title: "E-Learning Platform",
+              desc: "Interactive learning platform for structured educational content.",
+              img: learing,
+              link: "https://learing-livid.vercel.app",
+              color: "#0ea5e9",
+              tag: "Education",
+            },
+            {
+              title: "Portfolio Website",
+              desc: "Personal portfolio showcasing UI/UX and frontend skills.",
+              img: phone,
+              link: "https://tarekameramer.github.io/mohsen1Abdul-Moneim/",
+              color: "#64748b",
+              tag: "Branding",
+            },
+            {
+              title: "Cars Project",
+              desc: "Modern UI car showcase web application.",
+              img: cars,
+              link: "https://123-brown-rho.vercel.app",
+              color: "#f59e0b",
+              tag: "UI Project",
+            },
+            {
+              title: "Hode Project",
+              desc: "Creative web project with experimental UI.",
+              img: hode,
+              link: "nova/Home.html",
+              color: "#8b5cf6",
+              tag: "Experimental",
+            },
+          ].map((project, index) => (
+            <div
+              key={index}
+              className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition duration-300"
+            >
+
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
+                />
+
+                <span
+                  className="absolute top-3 right-3 text-[10px] px-3 py-1 rounded-full text-white font-semibold"
+                  style={{ backgroundColor: project.color }}
+                >
+                  {project.tag}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+
+                <h3 className="text-white font-bold text-xl">
+                  {project.title}
+                </h3>
+
+                <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+                  {project.desc}
+                </p>
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block mt-5 text-sm font-semibold text-white hover:text-[#E63946] transition"
+                >
+                  View Project →
+                </a>
+
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
-    </div>
 
-    <div className="project-card" data-aos="zoom-in">
-      <img src={phone} alt="Portfolio Project"/>
-      <div className="p-5">
-        <h4>Portfolio Project</h4>
-        <p>Previous portfolio project.</p>
-        <div>
-          <a href="https://tarekameramer.github.io/mohsen1Abdul-Moneim/" target="_blank">Live</a>
-        </div>
+      {/* Swiper Section */}
+      <div className="relative mt-24 pb-10">
+        <h4 className="text-center text-gray-500 uppercase tracking-[0.3em] text-xs mb-10">
+          Quick Preview
+        </h4>
+
+        <Swiper
+          effect={"cards"}
+          grabCursor={true}
+          modules={[EffectCards]}
+          className="w-72 h-96 md:w-80 md:h-[450px]"
+        >
+
+          {[gym, learing, cars, hode].map((img, i) => (
+            <SwiperSlide
+              key={i}
+              className="bg-white/5 border border-white/10 rounded-3xl p-4 flex flex-col"
+            >
+              <img
+                src={img}
+                alt="project"
+                className="rounded-2xl h-2/3 object-cover mb-4"
+              />
+
+              <h5 className="text-white font-bold text-center">
+                Project {i + 1}
+              </h5>
+
+              <a
+                href="#"
+                className="mt-auto bg-[#E63946] text-white py-2 px-4 rounded-xl text-center text-sm"
+              >
+                View
+              </a>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-    </div>
 
-    <div className="project-card" data-aos="zoom-in">
-      <img src={cars} alt="Fourth Project"/>
-      <div className="p-5">
-        <h4>Fourth Project</h4>
-        <p>Latest web project.</p>
-        <div>
-<a href="https://123-brown-rho.vercel.app" target="_blank" rel="noreferrer">
-  Live
-</a>        </div>
-      </div>
-    </div>
+    </section>
+  );
+};
 
-    <div className="project-card" data-aos="zoom-in">
-      <img src={hode} alt="Fourth Project"/>
-      <div className="p-5">
-        <h4>Fourth Project</h4>
-        <p>Latest web project.</p>
-        <div>
-          <a href="nova/Home.html" target="_blank">Live</a>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-</div>
-
-
-
-      <Swiper
-        effect={'cards'}
-        grabCursor={true}
-        modules={[EffectCards]}
-        className="mySwiper"
-      >
-        <SwiperSlide className=''>
-
- <img src={learing} alt="Learning Project"/>
-        <h4>
-          تعليم منصة
-           </h4>
-          
-
-                  <a href="https://learing-livid.vercel.app" target="_blank"className="bg-[#E63946] hover:bg-[#C1121F] hover:scale-105 transition duration-300 py-1 px-3 rounded ml-2 mt-5 text-white" >Live</a>
-
-
-        </SwiperSlide>
-
-
-        <SwiperSlide>
-
-
-      <img src={gym} alt="Game Project"/>
-        <h4>gym Project</h4>
-          <a href="https://form-u8pa.vercel.app" target="_blank" className='bg-red-700 py-1 px-2 rounded ml-2 mt-5 text-white'>Live</a>
-       
-
-        </SwiperSlide>
-
-
-
-
-        <SwiperSlide>
-
-
- <img src={phone} alt="Portfolio Project"/>
-        <h4>Portfolio Project</h4>
-       
-          <a href="https://tarekameramer.github.io/mohsen1Abdul-Moneim/" target="_blank" className="bg-[#E63946] hover:bg-[#C1121F] hover:scale-105 transition duration-300 py-1 px-3 rounded ml-2 mt-5 text-white">Live</a>
-   
-
-
-
-
-        </SwiperSlide>
-
-
-
-
-        <SwiperSlide>
-  <img src={cars} alt="Fourth Project"/>
-        <h4>cars Project</h4>
-          <a href="https://123-brown-rho.vercel.app" target="_blank" rel="noreferrer" className="bg-[#E63946] hover:bg-[#C1121F] hover:scale-105 transition duration-300 py-1 px-3 rounded ml-2 mt-5 text-white">Live</a>
-        </SwiperSlide>
-        <SwiperSlide>
-  <img src={hode} alt="Fourth Project"/>
-        <h4>hode Project</h4>
-          <a href="nova/Home.html" target="_blank" className="bg-[#E63946] hover:bg-[#C1121F] hover:scale-105 transition duration-300 py-1 px-3 rounded ml-2 mt-5 text-white">Live</a>
-        </SwiperSlide>
-       
-
-        
-      </Swiper>
-
-
-
-
-    </div>
-  )
-}
-
-export default Projectss
-
-        
+export default Projectss;

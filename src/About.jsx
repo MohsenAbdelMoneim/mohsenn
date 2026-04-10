@@ -1,72 +1,90 @@
-import React from 'react'
-import './index.css'
+import React from "react";
 
 const About = () => {
   return (
-    <div className="py-20 px-4 md:px-6">
+    <section
+      id="about"
+      className="relative py-24 px-6 bg-[#0B0F19] overflow-hidden"
+      data-aos="fade-up"
+    >
 
-      <section
-        id="about"
-        className="relative py-16 md:py-24 max-w-5xl mx-auto px-6 md:px-12 bg-white/[0.03] border border-white/10 rounded-[2.5rem] backdrop-blur-2xl shadow-2xl overflow-hidden"
-        data-aos="fade-up"
-      >
+      {/* Soft Glow */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E63946] opacity-10 blur-[140px] rounded-full" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#E63946] opacity-10 blur-[140px] rounded-full" />
+      </div>
 
-        {/* Background Glow */}
-        <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#E63946] opacity-[0.06] blur-[120px] rounded-full"></div>
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-[#E63946] opacity-[0.06] blur-[120px] rounded-full"></div>
+      <div className="relative max-w-5xl mx-auto">
 
         {/* Header */}
-        <div className="relative text-center mb-12">
-          <h3 className="text-4xl md:text-5xl font-black text-[#E63946]">
-            About Me
-          </h3>
+        <div className="text-center mb-16">
+          <span className="text-xs tracking-[0.4em] text-[#E63946] uppercase font-semibold">
+            About
+          </span>
 
-          <div className="w-16 h-1 bg-[#E63946]/50 mx-auto mt-4 rounded-full"></div>
+          <h2 className="mt-3 text-4xl md:text-6xl font-bold text-white">
+            About Me
+          </h2>
+
+          <div className="w-12 h-[2px] bg-[#E63946] mx-auto mt-6" />
         </div>
 
-        {/* Content */}
-        <div className="relative max-w-3xl mx-auto z-10">
+        {/* Bio */}
+        <div className="text-center max-w-3xl mx-auto">
 
-          <p
-            id="about-text"
-            className="text-center leading-[1.8] text-gray-200 text-lg md:text-xl lg:text-2xl font-light"
-            data-en="I’m a Frontend Developer with strong attention to detail and a passion for clean UI/UX. I enjoy turning ideas into real, interactive products and continuously improving my skills through hands-on projects."
-            data-ar="أنا مطور واجهات أمامية أهتم بالتفاصيل وتجربة المستخدم، وأحب تحويل الأفكار إلى منتجات حقيقية تفاعلية مع التطوير المستمر لمهاراتي من خلال المشاريع العملية."
-          >
-            I’m a <span className="text-[#E63946] font-bold">Frontend Developer</span> with strong attention to detail and a passion for clean <span className="text-white border-b border-[#E63946]/30">UI/UX</span>. I enjoy turning ideas into real, interactive products and continuously improving my skills through hands-on projects.
+          <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+            I’m a{" "}
+            <span className="text-white font-medium">
+              Frontend Developer & UI/UX Designer
+            </span>{" "}
+            with a background in{" "}
+            <span className="text-white font-medium">
+              Management Information Systems
+            </span>.
           </p>
 
-          {/* Stats */}
-          <div className="mt-16 flex flex-wrap justify-center gap-10 md:gap-16 items-center border-t border-white/5 pt-10">
+          <p className="mt-6 text-gray-500 text-base md:text-lg leading-relaxed">
+            I focus on building clean, scalable and user-centered web experiences
+            that connect design with real business value.
+          </p>
 
-            <div className="group text-center">
-              <p className="text-[#E63946] font-black text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110">
-                1+
-              </p>
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mt-2">
-                Years Exp.
-              </p>
-            </div>
+        </div>
 
-            <div className="hidden sm:block w-[1px] h-12 bg-white/10"></div>
+        {/* Stats */}
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center border-t border-white/10 pt-12">
 
-            <div className="group text-center">
-              <p className="text-[#E63946] font-black text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110">
-                10+
-              </p>
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mt-2">
-                Projects
-              </p>
-            </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white hover:text-[#E63946] transition">
+              1+
+            </p>
+            <p className="mt-3 text-xs tracking-[0.3em] text-gray-500 uppercase">
+              Experience
+            </p>
+          </div>
 
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white hover:text-[#E63946] transition">
+              15+
+            </p>
+            <p className="mt-3 text-xs tracking-[0.3em] text-gray-500 uppercase">
+              Projects
+            </p>
+          </div>
+
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white hover:text-[#E63946] transition">
+              MIS + Dev
+            </p>
+            <p className="mt-3 text-xs tracking-[0.3em] text-gray-500 uppercase">
+              Hybrid Focus
+            </p>
           </div>
 
         </div>
 
-      </section>
+      </div>
+    </section>
+  );
+};
 
-    </div>
-  )
-}
-
-export default About
+export default About;
